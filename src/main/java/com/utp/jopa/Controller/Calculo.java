@@ -16,9 +16,9 @@ public class Calculo implements ICalculo{
     @Override
     public int insertarVariables(String nombreVariable, int valorVariable) {
         
-        Variables variables = new Variables();
-        variables.setNombreVariable(nombreVariable);
-        variables.setValorVariable(valorVariable);      
+        //Variables variables = new Variables();
+        //variables.setNombreVariable(nombreVariable);
+        //variables.setValorVariable(valorVariable);      
 
         return valorVariable;
     }
