@@ -47,7 +47,7 @@ public class TablaSimplex {
     }
     
     public void generarTabla(){
-        // TODO add your handling code here:
+        
         DefaultTableModel model = (DefaultTableModel) tablaSimplex.getModel();
         int fila = 2;
         int columna = 3;
@@ -78,7 +78,6 @@ public class TablaSimplex {
     
     public void Calcular(){
     
-        // TODO add your handling code here:
         TablaSimplex.append("METODO SIMPLEX\n");
         DecimalFormat l = new DecimalFormat("0.000");
         int fila = Integer.parseInt(String.valueOf(filas));
