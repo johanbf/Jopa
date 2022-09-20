@@ -34,4 +34,8 @@ public class TablaSimplex {
         this.columnas = columnas;
     }
     
+    public void generarTabla(){
+        
+    }
+    
 }

@@ -43,7 +43,7 @@ public class MetodoSimplex extends TablaSimplex{
         
     }
     
-    public void buscarMAximoNegativo(){
+    public void buscarMaximoNegativo(){
         
     }
     
