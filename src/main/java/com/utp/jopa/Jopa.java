@@ -5,7 +5,7 @@
 
 package com.utp.jopa;
 
-import com.utp.jopa.view.CalculoView;
+import com.utp.jopa.Form.CalculoView;
 
 /**
  *
