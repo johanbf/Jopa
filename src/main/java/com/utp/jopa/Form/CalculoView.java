@@ -36,7 +36,7 @@ public class CalculoView extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaSimplex = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton5 = new javax.swing.JButton();
@@ -65,7 +65,7 @@ public class CalculoView extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSimplex.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"-40", "-80", "0", "0"},
                 {"1", "4", "1", "0"},
@@ -75,7 +75,7 @@ public class CalculoView extends javax.swing.JFrame {
                 "X1", "X2", "S1", "S2"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaSimplex);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -268,10 +268,10 @@ public class CalculoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTable tablaSimplex;
     // End of variables declaration//GEN-END:variables
 }
