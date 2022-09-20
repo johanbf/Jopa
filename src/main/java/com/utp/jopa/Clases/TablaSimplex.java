@@ -4,6 +4,8 @@
  */
 package com.utp.jopa.Clases;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author buitr
@@ -35,7 +37,33 @@ public class TablaSimplex {
     }
     
     public void generarTabla(){
-        
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        int fila = Integer.parseInt(filas.getText());
+        int columna = Integer.parseInt(columnas.getText());
+        int columna1 = columna;
+        for (int i = 0; i < columna; i++) {
+            model.addColumn("x" + (i + 1));
+        }
+        columna = fila + columna;
+
+        model.setRowCount(fila);
+        model.setColumnCount(columna);
+        for (int j = columna1; j < columna; j++) {
+            tabla.setValueAt(0, 0, j);
+        }
+        int i1 = 1, j1 = columna1;
+        for (int i = 1; i < fila; i++) {
+            for (int j = columna1; j < columna - 1; j++) {
+                if (i1 == i && j1 == j) {
+                    tabla.setValueAt(1, i, j);
+                } else {
+                    tabla.setValueAt(0, i, j);
+                }
+            }
+            j1++;
+            i1++;
+        }
     }
     
 }
