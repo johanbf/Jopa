@@ -42,7 +42,7 @@ public class CalculoView extends javax.swing.JFrame {
         Consola = new javax.swing.JTextArea();
         jButton5 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        Resultados = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -82,24 +82,28 @@ public class CalculoView extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Resultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"x1", "9"},
-                {"x2", "15"}
+
             },
             new String [] {
                 "Variable", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        Resultados.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(Resultados);
+        if (Resultados.getColumnModel().getColumnCount() > 0) {
+            Resultados.getColumnModel().getColumn(0).setResizable(false);
+            Resultados.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jLabel3.setText("Resultados");
 
@@ -202,7 +206,7 @@ public class CalculoView extends javax.swing.JFrame {
         columnas = Integer.parseInt(Columnas.getText());
         MetodoSimplex metodoSimplex = new MetodoSimplex( filas, columnas);
         DefaultTableModel model = new DefaultTableModel();
-        metodoSimplex.simplex(Consola,tablaSimplex);
+        metodoSimplex.simplex(model, Consola,tablaSimplex, Resultados);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -252,6 +256,7 @@ public class CalculoView extends javax.swing.JFrame {
     private javax.swing.JTextField Columnas;
     private javax.swing.JTextArea Consola;
     private javax.swing.JTextField Filas;
+    private javax.swing.JTable Resultados;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -262,7 +267,6 @@ public class CalculoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable tablaSimplex;
     // End of variables declaration//GEN-END:variables
 }

@@ -44,7 +44,8 @@ public class MetodoSimplex extends TablaSimplex{
         this.operacion = operacion;
     }
     
-    public void simplex(JTextArea Consola,JTable TableSimplex){
+    public void simplex(DefaultTableModel modelResultados, JTextArea Consola,JTable TableSimplex,JTable Resultados){
+        modelResultados = (DefaultTableModel) Resultados.getModel();
         int fila = getFilas();
         int columna = getColumnas();
         int columna1 = columna;
@@ -58,10 +59,36 @@ public class MetodoSimplex extends TablaSimplex{
             int v3[] = new int[getFilas()];
             int v4[] = new int[getFilas()];
             int co = 0;   
-            int f = 0, c = 0;
-            double negativo = 0;
-            c = buscarMaximoNegativo(Consola, fila, columna, columna1, negativo, v, c);
-            buscarPivote(Consola, getFilas(), getColumnas(), c, v, v2, v3, v4, f, y1, columna1, l);            
+            while(true){
+                if (co == columna1) {
+                    break;
+                }
+                int f = 0, c = 0;
+                double negativo = 0;
+                c = buscarMaximoNegativo(Consola, fila, columna, columna1, negativo, v, c);
+                Consola.append("C => "+c);
+                co = 0;
+                for (int i = 0; i < columna1; i++) {
+                    if (v[0][i] >= 0) {
+                        co++;
+                    }
+                }
+                buscarPivote(Consola, fila, columna, c, v, v2, v3, v4, f, y1, columna1, l);               
+            }         
+            
+            Consola.append("RESULTADO\n");
+            Consola.append("z = "+v[0][columna-1]+"\n");
+            modelResultados.setRowCount(fila + 1);
+            Resultados.setValueAt("z", 0, 0);
+            Resultados.setValueAt(v[0][columna-1], 0, 1);
+            for (int i = 1; i<fila; i++) {
+                char m1[]=v2[i].toCharArray();
+                if(m1[0]=='x'){
+                    Resultados.setValueAt(v2[i], i, 0);
+                    Resultados.setValueAt(v[v4[i]][columna-1], i, 1);
+                    Consola.append(" "+v2[i]+" = "+v[v4[i]][columna-1]+"\n");
+                }
+            }
         }
     }
     
@@ -111,7 +138,7 @@ public class MetodoSimplex extends TablaSimplex{
                 c = i;
             }
         }
-        Consola.append("EL MAXIMO NEGATIVO ES\n" + getColumnas());
+        Consola.append("EL MAXIMO NEGATIVO ES\n");
         Consola.append(" " + negativo + "\nla columna es \n");
         
         for (int i = 0; i < fila; i++) {
@@ -122,7 +149,7 @@ public class MetodoSimplex extends TablaSimplex{
     }
     
     public void buscarPivote(JTextArea Consola, int fila, int columna, int c, double v[][], String v2[], int v3[], int v4[], int f, int y1, int columna1, DecimalFormat l){
-            Consola.append("\n dividiendo con la columna\n");
+            Consola.append("\n dividiendo con la columna \n " );
             double menor = 0;
             double v1[] = new double[fila - 1];
             int h = 0;
@@ -209,15 +236,7 @@ public class MetodoSimplex extends TablaSimplex{
                 }
                 Consola.append("\n");
             }
-            Consola.append("\n\n");
-            
-        Consola.append("RESULTADO\n");
-        Consola.append("z = "+v[0][columna-1]+"\n");
-        for (int i = 1; i<fila; i++) {
-            char m1[]=v2[i].toCharArray();
-            if(m1[0]=='x'){
-            Consola.append(" "+v2[i]+" = "+v[v4[i]][columna-1]+"\n");
-            }
-        }
+            Consola.append("\n\n");       
+        
     }
 }
