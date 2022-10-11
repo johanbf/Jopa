@@ -43,7 +43,7 @@ public class CalculoView extends javax.swing.JFrame {
         Columnas = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaSimplex = new javax.swing.JTable();
+        tablaSimplexJF = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         Consola = new javax.swing.JTextArea();
         jButton5 = new javax.swing.JButton();
@@ -66,7 +66,7 @@ public class CalculoView extends javax.swing.JFrame {
             }
         });
 
-        tablaSimplex.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSimplexJF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -74,8 +74,8 @@ public class CalculoView extends javax.swing.JFrame {
 
             }
         ));
-        tablaSimplex.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tablaSimplex);
+        tablaSimplexJF.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tablaSimplexJF);
 
         Consola.setColumns(20);
         Consola.setRows(5);
@@ -203,10 +203,10 @@ public class CalculoView extends javax.swing.JFrame {
         int filas, columnas;
         filas = Integer.parseInt(Filas.getText());
         columnas = Integer.parseInt(Columnas.getText());               
-        MetodoSimplex metodoSimplex = new MetodoSimplex(filas, columnas);
-        DefaultTableModel model = new DefaultTableModel();
-        metodoSimplex.limpiarGeneral(true,model, tablaSimplex, Consola,Resultados,Filas,Columnas);
-        metodoSimplex.generarTabla(model, tablaSimplex, Consola);
+        MetodoSimplex metodoSimplex = new MetodoSimplex(filas,columnas);
+        DefaultTableModel model = new DefaultTableModel();              
+        metodoSimplex.limpiarGeneral(true,model, tablaSimplexJF, Consola,Resultados,Filas,Columnas);
+        metodoSimplex.generarTabla(model, tablaSimplexJF, Consola);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -216,7 +216,7 @@ public class CalculoView extends javax.swing.JFrame {
         columnas = Integer.parseInt(Columnas.getText());
         MetodoSimplex metodoSimplex = new MetodoSimplex( filas, columnas);
         DefaultTableModel model = new DefaultTableModel();
-        metodoSimplex.simplex(model, Consola,tablaSimplex, Resultados);
+        metodoSimplex.simplex(model, Consola,tablaSimplexJF, Resultados);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -242,7 +242,7 @@ public class CalculoView extends javax.swing.JFrame {
         // TODO add your handling code here:
         MetodoSimplex metodoSimplex = new MetodoSimplex();
         DefaultTableModel model = new DefaultTableModel();
-        metodoSimplex.limpiarGeneral(false,model,tablaSimplex, Consola, Resultados, Filas, Columnas);
+        metodoSimplex.limpiarGeneral(false,model,tablaSimplexJF, Consola, Resultados, Filas, Columnas);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -295,6 +295,6 @@ public class CalculoView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tablaSimplex;
+    private javax.swing.JTable tablaSimplexJF;
     // End of variables declaration//GEN-END:variables
 }

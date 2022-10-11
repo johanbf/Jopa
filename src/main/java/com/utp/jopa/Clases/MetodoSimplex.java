@@ -213,10 +213,10 @@ public class MetodoSimplex extends TablaSimplex{
             }
             Consola.append("\n");
            
-            for (int i = 0; i < fila; i++) {
-           if(i!=0){
-           Consola.append(v2[i]);
-           }
+           for (int i = 0; i < fila; i++) {
+                if(i!=0){
+                Consola.append(v2[i]);
+                }
                 for (int j = 0; j < columna; j++) {
                     Consola.append("\t " + l.format(v[i][j]));
                 }
@@ -255,7 +255,6 @@ public class MetodoSimplex extends TablaSimplex{
         
         model = (DefaultTableModel) resultados.getModel();
         model.setRowCount(0);
-        model.setColumnCount(0);
         
         if(!generarMatriz){
            filas.setText("");
