@@ -4,9 +4,17 @@
  */
 package com.utp.jopa.Clases;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,34 +22,12 @@ import javax.swing.table.DefaultTableModel;
  * @author buitr
  */
 public class MetodoSimplex extends TablaSimplex{
-    
-    private double resultad;
-    private int operacion;
 
+    public MetodoSimplex() {
+    }
+    
     public MetodoSimplex(int filas, int columnas) {
         super(filas, columnas);
-    }
-
-    public MetodoSimplex(double resultad, int operacion, int filas, int columnas) {
-        super(filas, columnas);
-        this.resultad = resultad;
-        this.operacion = operacion;
-    }
-
-    public double getResultad() {
-        return resultad;
-    }
-
-    public void setResultad(double resultad) {
-        this.resultad = resultad;
-    }
-
-    public int getOperacion() {
-        return operacion;
-    }
-
-    public void setOperacion(int operacion) {
-        this.operacion = operacion;
     }
     
     public void simplex(DefaultTableModel modelResultados, JTextArea Consola,JTable TableSimplex,JTable Resultados){
@@ -238,5 +224,42 @@ public class MetodoSimplex extends TablaSimplex{
             }
             Consola.append("\n\n");       
         
+    }
+    
+    public void generarPDf(String path, String texto) throws FileNotFoundException, DocumentException {
+        
+        if(!texto.isEmpty()){
+            
+            FileOutputStream archivo = new FileOutputStream(path+".pdf");
+            Document documento = new Document();
+            PdfWriter.getInstance(documento, archivo);
+            documento.open();
+            
+            documento.add(new Paragraph(texto));
+            documento.close();            
+            
+            JOptionPane.showMessageDialog(null, "Archivo PDf creado correctamente");
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "No se ha procesado ninguna solución");
+        }
+        
+    }
+        
+    public void limpiarGeneral(boolean generarMatriz,DefaultTableModel model, JTable TableSimplex, JTextArea Consola, JTable resultados, JTextField filas, JTextField columnas) {
+        model = (DefaultTableModel) TableSimplex.getModel();
+        model.setRowCount(0);
+        model.setColumnCount(0);
+        
+        Consola.setText("");
+        
+        model = (DefaultTableModel) resultados.getModel();
+        model.setRowCount(0);
+        model.setColumnCount(0);
+        
+        if(!generarMatriz){
+           filas.setText("");
+           columnas.setText("");
+        }        
     }
 }

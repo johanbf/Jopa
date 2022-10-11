@@ -41,7 +41,7 @@ public class TablaSimplex {
     public void setColumnas(int columnas) {
         this.columnas = columnas;
     }
-    
+        
     public void generarTabla(DefaultTableModel model, JTable tablaSimplex, JTextArea Consola){
                      
         model = (DefaultTableModel) tablaSimplex.getModel();
@@ -77,5 +77,5 @@ public class TablaSimplex {
             i1++;
         }
     }
-   
+    
 }
